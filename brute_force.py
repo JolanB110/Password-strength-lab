@@ -37,5 +37,43 @@ def Simple_brute_force(password):
         #Increase the password length if the password was not found
         length += 1
 
-
 Simple_brute_force("abc")
+
+
+"""
+ideal brute force function to find a password much easier than
+the simple brute force function. This function will check every character
+in the password and will validate characters one by one instead of
+checking every possible combination.
+"""
+
+def Ideal_brute_force(password):
+    iteration = 0
+    forcedPassword = ""
+
+    #Check every character in the password one by one
+    for i in range(len(password)):
+
+        #try every character from the character list
+        for char in char_list:
+            iteration += 1
+
+            #print(f"Trying character: {char}")
+
+            if char == password[i]:
+                forcedPassword += char
+                break
+
+    if forcedPassword == password:
+        print("Result of Ideal Brute Force:")
+        print(f"Password found: {forcedPassword}")
+        print(f"Number of attempts: {iteration}")
+        return
+
+"""
+WARNING : This will not work in real use because you can't check the password
+character by character. This is just a simulation of how it would work if
+you could check the password character by character.
+"""
+
+Ideal_brute_force("abc")
