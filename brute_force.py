@@ -77,3 +77,10 @@ you could check the password character by character.
 """
 
 Ideal_brute_force("abc")
+
+
+"""
+Dictionary brute force function to find a password faster than simple brute force.
+This function will use a dictionary of common passwords to check against first
+before trying every possible combination.
+"""
