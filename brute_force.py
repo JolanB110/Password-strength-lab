@@ -37,7 +37,7 @@ def Simple_brute_force(password):
         #Increase the password length if the password was not found
         length += 1
 
-Simple_brute_force("abc")
+Simple_brute_force(input("Enter the password to brute force: ") or "abc")
 
 
 """
@@ -76,7 +76,7 @@ character by character. This is just a simulation of how it would work if
 you could check the password character by character.
 """
 
-Ideal_brute_force("abc")
+Ideal_brute_force(input("Enter the password to brute force: ") or "abc")
 
 
 """
@@ -84,3 +84,26 @@ Dictionary brute force function to find a password faster than simple brute forc
 This function will use a dictionary of common passwords to check against first
 before trying every possible combination.
 """
+
+def Dictionary_brute_force(password):
+    iteration = 0
+
+    with open("data/french_passwords_top20000.txt", "r") as file:
+        for line in file:
+            iteration += 1
+            forcedPassword = line.strip()
+
+            #print(f"Trying password: {forcedPassword}")
+
+            if forcedPassword == password:
+                print("Result of Dictionary Brute Force:")
+                print(f"Password found: {forcedPassword}")
+                print(f"Number of attempts: {iteration}")
+                return
+
+    #if the password was not found in the dictionary, use simple brute force
+    print("Password not found in dictionary, using simple brute force...")
+    if input("Do you want to continue using simple brute force ? (y/n): ").lower() == "y":
+        Simple_brute_force(password)
+
+Dictionary_brute_force(input("Enter the password to brute force: ") or "abc")
